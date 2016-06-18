@@ -71,16 +71,20 @@ public class SignIn extends HttpServlet {
         String putword = "SetWord";
         
         if (j_username.equals(putname)){
+            
             if (j_password.equals(putword)){
+                
                 request.setAttribute("j_username", j_username);
                 request.getSession().setAttribute("j_username", j_username);
                 request.getRequestDispatcher("/homepage.jsp").forward(request, response);
                 
-            }
-            else{
-                request.getRequestDispatcher("/login-erro.jsp").forward(request, response);
-            }
-        }else{
+                }
+
+                else {
+                    request.getRequestDispatcher("/login-error.jsp").forward(request, response);
+                }
+            
+            } else {
                 request.getRequestDispatcher("/login-error.jsp").forward(request, response);
         }
         
