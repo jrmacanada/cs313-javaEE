@@ -15,7 +15,7 @@
         <h1>Welcome Page</h1>
         <p>Hello ${param.j_username}, glad you made it!</p>
         
-        <form action="LogOut" method="get">
+        <form action="/FirstProject/LogOut" method="GET">
             <input type="submit" value="Good-bye">
         </form>
     </body>

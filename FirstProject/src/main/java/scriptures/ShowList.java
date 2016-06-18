@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userword;
+package scriptures;
 
 import java.io.IOException;
 //import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,10 +19,11 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author michaelcavey
  */
-@WebServlet(name = "SignIn", urlPatterns = {"/SignIn"})
-public class SignIn extends HttpServlet {
+@WebServlet(name = "ShowList", urlPatterns = {"/ShowList"})
+public class ShowList extends HttpServlet {
+    private static final long serialVersionUID =1L;
     
-    public SignIn(){
+    public ShowList() {
         super();
     }
 
@@ -37,14 +40,14 @@ public class SignIn extends HttpServlet {
 //            throws ServletException, IOException {
 //        response.setContentType("text/html;charset=UTF-8");
 //        try (PrintWriter out = response.getWriter()) {
-//            /* TODO output your page here. You may use following sample code. */
+            /* TODO output your page here. You may use following sample code. */
 //            out.println("<!DOCTYPE html>");
 //            out.println("<html>");
 //            out.println("<head>");
-//            out.println("<title>Servlet SignIn</title>");            
+//            out.println("<title>Servlet ShowList</title>");            
 //            out.println("</head>");
 //            out.println("<body>");
-//            out.println("<h1>Servlet SignIn at " + request.getContextPath() + "</h1>");
+//            out.println("<h1>Servlet ShowList at " + request.getContextPath() + "</h1>");
 //            out.println("</body>");
 //            out.println("</html>");
 //        }
@@ -62,34 +65,15 @@ public class SignIn extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        processRequest(request, response);
-
-        String j_username = request.getParameter("j_username");
-        String j_password = request.getParameter("j_password");
         
-        String putname = "SetName";
-        String putword = "SetWord";
+        List<String> scriptures = new ArrayList<String>();
+        scriptures.add("Proverbs 3:5");
+        scriptures.add("Doc. &amp; Cov. 112:10");
+        scriptures.add("John 7:17");
         
-        if (j_username.equals(putname)){
-            
-            if (j_password.equals(putword)){
-                
-                request.setAttribute("j_username", j_username);
-                request.getSession().setAttribute("j_username", j_username);
-                request.getRequestDispatcher("/teamwork/homepage.jsp").forward(request, response);
-                
-                }
-
-                else {
-                    request.getRequestDispatcher("/teamwork/login-error.jsp").forward(request, response);
-                }
-            
-            } else {
-                request.getRequestDispatcher("/teamwork/login-error.jsp").forward(request, response);
-        }
-        
+        request.setAttribute("scriptures", scriptures);
+        request.getRequestDispatcher("scriptureList.jsp").forward(request, response);
     }
-
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -99,12 +83,12 @@ public class SignIn extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-//    @Override
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 //        processRequest(request, response);
-//    }
-
+    }
+    
     /**
      * Returns a short description of the servlet.
      *
@@ -112,7 +96,13 @@ public class SignIn extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "? Short description ?";
+        return "Short description";
     }// </editor-fold>
 
 }
+
+//<%
+//for (String scripture : (List<String>)request.getAttribute ("scriptures")) {
+//        out.print(scripture + "br />");
+//}
+//%>

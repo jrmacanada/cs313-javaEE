@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userword;
+package solution;
 
 import java.io.IOException;
 //import java.io.PrintWriter;
@@ -15,14 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author michaelcavey
+ * @author sburton
  */
-@WebServlet(name = "SignIn", urlPatterns = {"/SignIn"})
-public class SignIn extends HttpServlet {
+@WebServlet(name = "Logout", urlPatterns = {"/Logout"})
+public class Logout extends HttpServlet {
     
-    public SignIn(){
-        super();
-    }
+//    public Logout(){
+//        super();
+//        }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,19 +35,11 @@ public class SignIn extends HttpServlet {
      */
 //    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 //            throws ServletException, IOException {
-//        response.setContentType("text/html;charset=UTF-8");
-//        try (PrintWriter out = response.getWriter()) {
-//            /* TODO output your page here. You may use following sample code. */
-//            out.println("<!DOCTYPE html>");
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>Servlet SignIn</title>");            
-//            out.println("</head>");
-//            out.println("<body>");
-//            out.println("<h1>Servlet SignIn at " + request.getContextPath() + "</h1>");
-//            out.println("</body>");
-//            out.println("</html>");
-//        }
+        
+            // correct username and password!
+//            request.getSession().removeAttribute("username");
+//            response.sendRedirect("solution/index.jsp");
+                
 //    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -64,32 +56,11 @@ public class SignIn extends HttpServlet {
             throws ServletException, IOException {
 //        processRequest(request, response);
 
-        String j_username = request.getParameter("j_username");
-        String j_password = request.getParameter("j_password");
-        
-        String putname = "SetName";
-        String putword = "SetWord";
-        
-        if (j_username.equals(putname)){
-            
-            if (j_password.equals(putword)){
-                
-                request.setAttribute("j_username", j_username);
-                request.getSession().setAttribute("j_username", j_username);
-                request.getRequestDispatcher("/teamwork/homepage.jsp").forward(request, response);
-                
-                }
+        // correct username and password!
+            request.getSession().removeAttribute("username");
+            response.sendRedirect("solution/index.jsp");
 
-                else {
-                    request.getRequestDispatcher("/teamwork/login-error.jsp").forward(request, response);
-                }
-            
-            } else {
-                request.getRequestDispatcher("/teamwork/login-error.jsp").forward(request, response);
-        }
-        
     }
-
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -112,7 +83,7 @@ public class SignIn extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "? Short description ?";
+        return "Short description";
     }// </editor-fold>
 
 }

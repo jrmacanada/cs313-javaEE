@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userword;
+package solution;
 
 import java.io.IOException;
 //import java.io.PrintWriter;
@@ -15,15 +15,15 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author michaelcavey
+ * @author sburton
  */
-@WebServlet(name = "SignIn", urlPatterns = {"/SignIn"})
-public class SignIn extends HttpServlet {
+@WebServlet(name = "Login", urlPatterns = {"/Login"})
+public class Login extends HttpServlet {
     
-    public SignIn(){
-        super();
-    }
-
+//    public Login(){
+//        super();
+//    }
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,18 +35,22 @@ public class SignIn extends HttpServlet {
      */
 //    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 //            throws ServletException, IOException {
-//        response.setContentType("text/html;charset=UTF-8");
-//        try (PrintWriter out = response.getWriter()) {
-//            /* TODO output your page here. You may use following sample code. */
-//            out.println("<!DOCTYPE html>");
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>Servlet SignIn</title>");            
-//            out.println("</head>");
-//            out.println("<body>");
-//            out.println("<h1>Servlet SignIn at " + request.getContextPath() + "</h1>");
-//            out.println("</body>");
-//            out.println("</html>");
+        
+        // obviously these belong in a DB or something...
+//        String correctName = "SetName";
+//        String correctPassword = "SetWord";
+
+//        String username = request.getParameter("txtUsername");
+//        String password = request.getParameter("txtPassword");
+
+//        if (username != null && password != null
+//                && username.equals(correctName) && password.equals(correctPassword)) {
+
+            // correct username and password!
+//            request.getSession().setAttribute("username", username);
+//            response.sendRedirect("/solution/welcome.jsp");
+//        } else {
+//            response.sendRedirect("/solution/badLogin.jsp");
 //        }
 //    }
 
@@ -64,32 +68,23 @@ public class SignIn extends HttpServlet {
             throws ServletException, IOException {
 //        processRequest(request, response);
 
-        String j_username = request.getParameter("j_username");
-        String j_password = request.getParameter("j_password");
-        
-        String putname = "SetName";
-        String putword = "SetWord";
-        
-        if (j_username.equals(putname)){
-            
-            if (j_password.equals(putword)){
-                
-                request.setAttribute("j_username", j_username);
-                request.getSession().setAttribute("j_username", j_username);
-                request.getRequestDispatcher("/teamwork/homepage.jsp").forward(request, response);
-                
-                }
+        // obviously these belong in a DB or something...
+        String correctName = "SetName";
+        String correctPassword = "SetWord";
 
-                else {
-                    request.getRequestDispatcher("/teamwork/login-error.jsp").forward(request, response);
-                }
-            
-            } else {
-                request.getRequestDispatcher("/teamwork/login-error.jsp").forward(request, response);
+        String username = request.getParameter("txtUsername");
+        String password = request.getParameter("txtPassword");
+
+        if (username != null && password != null
+                && username.equals(correctName) && password.equals(correctPassword)) {
+
+            // correct username and password!
+            request.getSession().setAttribute("username", username);
+            response.sendRedirect("/FirstProject/solution/welcome.jsp");
+        } else {
+            response.sendRedirect("/FirstProject/solution/badLogin.jsp");
         }
-        
     }
-
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -112,7 +107,7 @@ public class SignIn extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "? Short description ?";
+        return "Short description";
     }// </editor-fold>
 
 }

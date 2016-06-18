@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Login Error</title>
@@ -17,6 +18,6 @@
 <%--
     <p>Please enter a valid username or password. Click here to <a href="${url}">Try Again</a></p>
 --%>
-    <p>Please enter a valid username or password. Click here to <a href="login.jsp">Try Again</a></p>
+    <p>Please enter a valid username or password. Click here to <a href="teamwork/login.jsp">Try Again</a></p>
 </body>
 </html>

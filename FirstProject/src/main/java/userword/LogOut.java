@@ -65,7 +65,7 @@ public class LogOut extends HttpServlet {
 //        processRequest(request, response);
 
         request.getSession().setAttribute("j_username", "");
-        request.getRequestDispatcher("/login.jsp").forward(request, response);
+        request.getRequestDispatcher("teamwork/login.jsp").forward(request, response);
 
     }
 
