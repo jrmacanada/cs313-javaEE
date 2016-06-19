@@ -1,7 +1,7 @@
 <%-- 
     Document   : index.jsp
     Created on : June 18, 2016
-    Author     : mcavey
+    Author     : michaelcavey
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login to Forum</title>
     </head>
     <body>
@@ -26,7 +27,7 @@
         </form>
         <h2>Please Sign Up</h2>
         <p>(for new members)</p>
-        <form action="/FirstProject/ForumIn" method="POST">
+        <form action="/FirstProject/ForumUp" method="POST">
             <label for="txtName">Username:</label>
             <input type="text" id="txtUsername" name="txtUsername"></input>
             <br />

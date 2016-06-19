@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author michaelcavey
  */
-@WebServlet(name = "ForumOut", urlPatterns = {"/ForumOut"})
-public class ForumOut extends HttpServlet {
+@WebServlet(name = "ForumUp", urlPatterns = {"/ForumUp"})
+public class ForumUp extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,10 +32,22 @@ public class ForumOut extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        // correct username and password!
-            request.getSession().removeAttribute("username");
-            response.sendRedirect("forum/index.jsp");
-        
+        // obviously these belong in a DB or something...
+        String correctName = "Guest";
+        String correctPassword = "post";
+
+        String username = request.getParameter("txtUsername");
+        String password = request.getParameter("txtPassword");
+
+        if (username != null && password != null
+                && username.equals(correctName) && password.equals(correctPassword)) {
+
+            // correct username and password!
+            request.getSession().setAttribute("username", username);
+            response.sendRedirect("/FirstProject/forum/welcome.jsp");
+        } else {
+            response.sendRedirect("/FirstProject/forum/badLogin.jsp");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -6,7 +6,7 @@
 package ForumLets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+//import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,8 +33,8 @@ public class ForumIn extends HttpServlet {
             throws ServletException, IOException {
         
         // obviously these belong in a DB or something...
-        String correctName = "SetName";
-        String correctPassword = "SetWord";
+        String correctName = "Guest";
+        String correctPassword = "post";
 
         String username = request.getParameter("txtUsername");
         String password = request.getParameter("txtPassword");

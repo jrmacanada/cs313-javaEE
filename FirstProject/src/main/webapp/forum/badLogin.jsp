@@ -1,18 +1,21 @@
 <%-- 
     Document   : badLogin.jsp
     Created on : June 18, 2016
-    Author     : mcavey
+    Author     : michaelcavey
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Incorrect Login</title>
     </head>
     <body>
-        <h1>Incorrect Username / Password</h1>
-        
-        <a href="index.jsp">Click here</a> to log in again.
+        <h2>We do not recognize your Username/Password</h2>
+        <p>Please Sign-In to register for this forum.</p>
+        <p>Or enter Guest/post (username/password) for access.</p>
+        <a href="index.jsp">Click here</a> to return and try again.
     </body>
 </html>
