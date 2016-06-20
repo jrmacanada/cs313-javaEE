@@ -1,5 +1,5 @@
 <%-- 
-    Document   : badLogin
+    Document   : badLogin.jsp
     Created on : Nov 11, 2014, 9:44:00 AM
     Author     : sburton (post-assignment solution)
 --%>
