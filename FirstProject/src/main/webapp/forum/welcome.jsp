@@ -22,12 +22,12 @@
             }
         </script>
         
-        <form action="/FirstProject/forum/list-posts.jsp" method="POST">
+        <form action="/FirstProject/forum/listPosts.jsp" method="POST">
             <textarea onfocus="clearContents(this);" name="comment" cols="80" rows="20">Add your comments here</textarea><br /><br />
             <input type="submit" value="Submit Comments">
         </form><br />
         
-        <a href="/FirstProject/forum/list-posts.jsp">Display Thread</a>
+        <a href="/FirstProject/forum/listPosts.jsp">Display Thread</a>
         <br />
         <br />
         <a href="/FirstProject/ForumOut">Click here to log out</a>

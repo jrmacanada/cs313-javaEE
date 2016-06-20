@@ -34,22 +34,19 @@ public class ComputeSum extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-//    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
-//        response.setContentType("text/html;charset=UTF-8");
-//        try (PrintWriter out = response.getWriter()) {
-//            /* TODO output your page here. You may use following sample code. */
-//            out.println("<!DOCTYPE html>");
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>Servlet ComputeSum</title>");            
-//            out.println("</head>");
-//            out.println("<body>");
-//            out.println("<h1>Servlet ComputeSum at " + request.getContextPath() + "</h1>");
-//            out.println("</body>");
-//            out.println("</html>");
-//        }
-//    }
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+    
+        int num1 = Integer.parseInt(request.getParameter("first"));
+        int num2 = Integer.parseInt(request.getParameter("second"));
+        
+        int sum = num1 + num2;
+        // mac- make sum available to JSP page (line below)
+        request.setAttribute("sum", sum);
+        // mac- forwards execution to the JSP page named "result.jsp" (line below)
+        request.getRequestDispatcher("result.jsp").forward(request, response);
+        }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -63,15 +60,7 @@ public class ComputeSum extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        int num1 = Integer.parseInt(request.getParameter("first"));
-        int num2 = Integer.parseInt(request.getParameter("second"));
-        
-        int sum = num1 + num2;
-        // mac- make sum available to JSP page (line below)
-        request.setAttribute("sum", sum);
-        // mac- forwards execution to the JSP page named "result.jsp" (line below)
-        request.getRequestDispatcher("result.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -82,20 +71,20 @@ public class ComputeSum extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-//    @Override
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
-//        processRequest(request, response);
-//    }
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
 
     /**
      * Returns a short description of the servlet.
      *
      * @return a String containing servlet description
      */
-//    @Override
-//    public String getServletInfo() {
-//        return "Short description";
-//    }// </editor-fold>
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
 
 }

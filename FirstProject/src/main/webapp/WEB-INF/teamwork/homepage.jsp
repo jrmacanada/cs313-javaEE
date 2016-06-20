@@ -1,5 +1,5 @@
 <%-- 
-    Document   : homepage.jsp
+    Document   : homepage
     Created on : Jun 15, 2016, 3:49:35 PM
     Author     : michaelcavey
 --%>
@@ -15,7 +15,7 @@
         <h1>Welcome Page</h1>
         <p>Hello ${param.j_username}, glad you made it!</p>
         
-        <form action="/FirstProject/LogOut" method="GET">
+        <form action="LogOut" method="get">
             <input type="submit" value="Good-bye">
         </form>
     </body>

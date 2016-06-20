@@ -1,5 +1,5 @@
 <%-- 
-    Document   : login
+    Document   : login.jsp
     Created on : Jun 15, 2016, 7:55:15 AM
     Author     : michaelcavey
 --%>
