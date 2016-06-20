@@ -1,7 +1,7 @@
 <%-- 
     Document   : index.jsp
     Created on : Nov 11, 2014, 9:43:00 AM
-    Author     : sburton
+    Author     : sburton (post-assignment solution)
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

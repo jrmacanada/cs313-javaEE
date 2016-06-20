@@ -1,7 +1,7 @@
 <%-- 
     Document   : badLogin
     Created on : Nov 11, 2014, 10:56:23 AM
-    Author     : sburton
+    Author     : sburton (post-assignment solution)
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
