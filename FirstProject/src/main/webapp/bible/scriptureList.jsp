@@ -18,7 +18,7 @@
     </head>
     <body>
         <h1>Scripture List</h1>  
-<%--   WAS - step 3.1 (Jonny) Page-1   
+  
         <% 
         List<String> scriptures = new ArrayList<String>(); 
         scriptures.add("Proverbs 3:5"); 
@@ -34,7 +34,7 @@
         }
         %>
         </div>
---%>
+
 <%--    WAS - step 2.2 (Jonny) Page-2 
         <div>
         Scriptures:<br /><br />
@@ -47,7 +47,7 @@
 
         </div>
 --%>
-<%--    //IS - step 2.4 (Jonny) Page-3 --%>
+<%--    //IS - step 2.4 (Jonny) Page-3 
         <div> 
             Scriptures:<br /><br />
             
@@ -56,6 +56,6 @@
             </c:forEach>
             
         </div>
-
+--%>
     </body>
 </html>
