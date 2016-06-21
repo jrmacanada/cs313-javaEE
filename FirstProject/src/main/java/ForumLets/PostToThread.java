@@ -6,27 +6,27 @@
 package ForumLets;
 
 import java.io.BufferedReader;
-//import java.io.BufferedWriter;
+import java.io.BufferedWriter;
 import java.io.FileReader;
-//import java.io.FileWriter;
+import java.io.FileWriter;
 //import java.io.File;
 import java.io.IOException;
 //import java.io.PrintWriter;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 /**
  *
  * @author michaelcavey (Adapted to kdastrup file system)
  */
-@WebServlet(name = "ForumUp", urlPatterns = {"/ForumUp"})
-public class ForumUp extends HttpServlet {
+@WebServlet(name = "PostToThread", urlPatterns = {"/PostToThread"})
+public class PostToThread extends HttpServlet {
     
-//    public ForumUp(){
+//    public PostToThread(){
 //       super();
 //    }
 
@@ -42,50 +42,36 @@ public class ForumUp extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-/**     (WAS) before post-assignment corrections
-
-        // obviously these belong in a DB or something...
-        String correctName = "Guest";
-        String correctPassword = "post";
-
-        String username = request.getParameter("txtUsername");
-        String password = request.getParameter("txtPassword");
-
-        if (username != null && password != null
-                && username.equals(correctName) && password.equals(correctPassword)) {
-
-            // correct username and password!
-            request.getSession().setAttribute("username", username);
-            response.sendRedirect("/FirstProject/forum/welcome.jsp");
-        } else {
-            response.sendRedirect("/FirstProject/forum/badLogin.jsp");
-        }
-    }
-*/
-
+        //get data from post
+        String newpost = request.getParameter("newpost");
         String username = request.getParameter("username");
-        String password = request.getParameter("password");
+       
+        //get timestamp
+        Date date = new Date();
+        String time = (date.toString());
         
-        request.getSession().setAttribute("username", username);
-        
-        //loop through file to find match
-        String temp;
-        boolean found = false;
-        String path = getServletContext().getRealPath("/") + "forum/members.txt";
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
-        while ((temp = bufferedReader.readLine()) != null) {
-        if((username + password).equals(temp)) {
+        //set data
         request.setAttribute("username", username);
-        request.getSession().setAttribute("username", username);
-        request.getRequestDispatcher("/forum/welcome.jsp").forward(request, response);
-        found = true;
-        break;
-        }
+        request.setAttribute("newpost", newpost);
+        request.setAttribute("time", time);
+        
+        String path = getServletContext().getRealPath("/") + "forum/thread.txt";
+        BufferedReader reader = new BufferedReader(new FileReader(path));
+        String line = "";
+        String result = "";
+        while ((line = reader.readLine()) != null){
+        result = result + line + "\n";
         }
         
-        if (found == false){
-            request.getRequestDispatcher("/forum/badLogin.jsp").forward(request, response);
-        }
+        //String temp = in.readLine();
+        BufferedWriter out = new BufferedWriter(new FileWriter(path));
+        out.write("'" + newpost + "'" + "\n" +
+                  "Submitted by: " + username + "\n" + 
+                  "on " + time + "\n\n" + result + "\n");
+        out.close();
+        
+        
+        request.getRequestDispatcher("/forum/listPosts.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

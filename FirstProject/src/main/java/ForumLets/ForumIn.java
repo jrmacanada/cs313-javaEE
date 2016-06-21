@@ -5,6 +5,11 @@
  */
 package ForumLets;
 
+import java.io.BufferedReader;
+//import java.io.BufferedWriter;
+import java.io.FileReader;
+//import java.io.FileWriter;
+//import java.io.File;
 import java.io.IOException;
 //import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,12 +18,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 /**
  *
- * @author michaelcavey
+ * @author michaelcavey (Adapted to kdastrup file system)
  */
 @WebServlet(name = "ForumIn", urlPatterns = {"/ForumIn"})
 public class ForumIn extends HttpServlet {
+    
+//    public ForumUp(){
+//       super();
+//    }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,6 +42,8 @@ public class ForumIn extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+/**     (WAS) before post-assignment corrections
+
         // obviously these belong in a DB or something...
         String correctName = "Guest";
         String correctPassword = "post";
@@ -48,6 +60,33 @@ public class ForumIn extends HttpServlet {
         } else {
             response.sendRedirect("/FirstProject/forum/badLogin.jsp");
         }
+    }
+*/
+
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        
+        request.getSession().setAttribute("username", username);
+        
+        //loop through file to find match
+        String temp;
+        boolean found = false;
+        String path = getServletContext().getRealPath("/") + "forum/members.txt";
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
+        while ((temp = bufferedReader.readLine()) != null) {
+        if((username + password).equals(temp)) {
+        request.setAttribute("username", username);
+        request.getSession().setAttribute("username", username);
+        request.getRequestDispatcher("/forum/welcome.jsp").forward(request, response);
+        found = true;
+        break;
+        }
+        }
+        
+        if (found == false){
+            request.getRequestDispatcher("/forum/badLogin.jsp").forward(request, response);
+        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

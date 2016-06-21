@@ -14,7 +14,7 @@
     </head>
     
     <body>
-        <h2>Hello ${username}!</h2>
+        <h2>Hello ${sessionScope.username}!</h2>
         
         <script>
             function clearContents(element) {
@@ -22,8 +22,9 @@
             }
         </script>
         
-        <form action="/FirstProject/forum/listPosts.jsp" method="POST">
-            <textarea onfocus="clearContents(this);" name="comment" cols="80" rows="20">Add your comments here</textarea><br /><br />
+        <form action="/FirstProject/PostToThread" method="POST">
+            <input type="hidden" name="username" value="${sessionScope.username}">
+            <textarea onfocus="clearContents(this);" name="newpost" cols="80" rows="20">Add your comments here</textarea><br /><br />
             <input type="submit" value="Submit Comments">
         </form><br />
         

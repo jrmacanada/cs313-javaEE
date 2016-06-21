@@ -15,7 +15,9 @@
     <body>
         <h2>We do not recognize your Username/Password</h2>
         <p>Please Sign-In to register for this forum.</p>
-        <p>Or enter Guest/post (username/password) for access.</p>
-        <a href="index.jsp">Click here</a> to return and try again.
+        
+<!--        <p>Or enter <strong>Guest/post</strong> (username/password) for access.</p>
+-->
+        <a href="/FirstProject/forum/index.jsp">Click here</a> to return and try again.
     </body>
 </html>
